@@ -1,6 +1,6 @@
 # Test the rest resource using the MicroProfile-Rest-Client injectable type safe rest client
 
-GET http://127.0.0.1:8080/get
+GET http://127.0.0.1:8082/get
 
 ###
 

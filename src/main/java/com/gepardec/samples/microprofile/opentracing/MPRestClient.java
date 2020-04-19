@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 // so we have to register the client tracer via an feature
 @RegisterProviders(@RegisterProvider(ClientTracingFeature.class))
 @Path("/")
-public interface ExternalRestResource {
+public interface MPRestClient {
 
     @Path("/get")
     @GET

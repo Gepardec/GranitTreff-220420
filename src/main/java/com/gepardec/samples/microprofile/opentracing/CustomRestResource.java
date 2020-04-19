@@ -56,7 +56,7 @@ public class CustomRestResource {
     /**
      * @return the rest client manually built with manually built tracing feature
      */
-    private ExternalRestResource createRestClient() {
+    private MPRestClient createRestClient() {
         try {
             final String url = config.getOptionalValue(EXTERNAL_RESOURCE_KEY_URL, String.class)
                     .orElseThrow(() -> new IllegalStateException(String.format("Configuration property '%s' not defined", EXTERNAL_RESOURCE_KEY_URL)));
@@ -66,7 +66,7 @@ public class CustomRestResource {
                     .readTimeout(2000, TimeUnit.SECONDS)
                     .connectTimeout(2000, TimeUnit.SECONDS)
                     .register(feature)
-                    .build(ExternalRestResource.class);
+                    .build(MPRestClient.class);
         } catch (MalformedURLException e) {
             throw new RuntimeException("URI is not valid");
         }

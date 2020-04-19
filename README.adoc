@@ -48,7 +48,7 @@ The Thorntail microservice target directory.
 The Wildfly microservice target directory.
 * link:./src/main/resources[``./src/main/resources``] +
 The resource directory containing resources used by all microservice types.
-* link:./src/main/resources-quakrus[``./src/main/resources-quarkus``] +
+* link:./src/main/resources-quarkus[``./src/main/resources-quarkus``] +
 The resource directory containing resources used by Quarkus microservice only.
 * link:./src/main/resources-thorntail[``./src/main/resources-thorntail``] +
 The resource directory containing resources used by Thorntail microservice only.
@@ -98,12 +98,14 @@ The web resource directory containing resources used by Wildfly microservice onl
 [source,bash]
 ----
 ./mvnw[.cmd] thorntail:run -f pom-thorntail.xml
+java "-Djava.net.preferIPv4Stack=true" "-Dquarkus.http.port=8082" -jar target-thorntail\microprofile-thorntail-0.0.1-SNAPSHOT-thorntail.jar
 ----
 
 .Start Quarkus microservice (8082)
 [source,bash]
 ----
-java "-Djava.net.preferIPv4Stack=true" -jar target-quarkus\microprofile-quarkus-0.0.1-SNAPSHOT-runner.jar
+./mvnw[.cmd] quarkus:dev -f pom-quarkus.xml
+java "-Djava.net.preferIPv4Stack=true" "-Dquarkus.http.port=8082" -jar target-quarkus\microprofile-quarkus-0.0.1-SNAPSHOT-runner.jar
 ----
 
 TIP: Normally the maven goal ``quarkus:dev`` should start the application as well but it fails with ClassNotFoundException (org/jboss/logging/Logger). +

@@ -11,7 +11,7 @@ thorntail:
             externalResource/mp-rest/readTimeout: "2000"
   # Quarkus Jaeger tracing configuration properties
   jaeger:
-    service-name: microprofile-opentracing-thorntail
+    service-name: microservice-thorntail
     agent-host: localhost
     agent-port: 6831
     reporter-log-spans: true

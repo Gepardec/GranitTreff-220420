@@ -16,7 +16,7 @@ public class RestResource {
     // Qualified injection of the type safe rest client
     @Inject
     @RestClient
-    ExternalRestResource restResource2;
+    MPRestClient restResource2;
 
     @Path("/get")
     @GET
