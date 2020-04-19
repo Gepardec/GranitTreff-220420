@@ -1,0 +1,12 @@
+thorntail:
+  management:
+    http:
+      disable: true
+  logging:
+    pattern-formatters:
+      LOG_FORMATTER:
+        pattern: "%p [%c] %s%e%n"
+    root-logger:
+      level: INFO
+      handlers:
+        - CONSOLE

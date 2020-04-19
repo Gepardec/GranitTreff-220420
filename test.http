@@ -1,0 +1,36 @@
+# Test the rest resource using the MicroProfile-Rest-Client injectable type safe rest client
+
+GET http://127.0.0.1:8080/get
+
+###
+
+POST http://127.0.0.1:8080/post
+
+###
+
+DELETE http://127.0.0.1:8080/delete
+
+###
+# Wuakrus doesn't use proper JAX-RS version therefore http method PATCH is not supported
+PATCH http://127.0.0.1:8080/patch
+
+###
+
+# Test the rest resource using the custom built type safe rest client
+
+GET http://127.0.0.1:8080/custom/get
+
+###
+
+POST http://127.0.0.1:8080/custom/post
+
+###
+
+DELETE http://127.0.0.1:8080/custom/delete
+
+###
+
+# Wuakrus doesn't use proper JAX-RS version therefore http method PATCH is not supported
+PATCH http://127.0.0.1:8080/custom/patch
+
+###

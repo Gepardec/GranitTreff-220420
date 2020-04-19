@@ -1,0 +1,20 @@
+thorntail:
+  # Rest client configuration properties
+  microprofile:
+    config:
+      config-sources:
+        configuration:
+          properties:
+            externalResource/mp-rest/url: "http://httpbin.org"
+            externalResource/mp-rest/scope: "javax.enterprise.context.RequestScoped"
+            externalResource/mp-rest/connectTimeout: "2000"
+            externalResource/mp-rest/readTimeout: "2000"
+  # Quarkus Jaeger tracing configuration properties
+  jaeger:
+    service-name: microprofile-opentracing-thorntail
+    agent-host: localhost
+    agent-port: 6831
+    reporter-log-spans: true
+    reporter-flush-interval: 2000
+    sampler-type: const
+    sampler-parameter: 1

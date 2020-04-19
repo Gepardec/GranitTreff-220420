@@ -1,0 +1,157 @@
+= Microservices with Thorntail (GranitTreff)
+
+This repository holds the sample application for the talk __Microservice with Thorntail__ at GranitTreff on 22.04.2020. Actually this repository illustrates how a JEE application can run on multiple runtimes such as Quakrus, Thorntail and Wildfly.
+
+== Description
+
+This samples application represents an ordinary JEE application with MicroProfiles.
+
+== Technologies
+
+* link:https://jdk.java.net/11/[Java JDK 11]
+* link:https://docs.jboss.org/wildfly/plugins/maven/2.0.1.Final/[wildfly-maven-plugin 2.0.1.Final]
+* link:https://docs.thorntail.io/2.5.0.Final/#using-thorntail-maven-plugin_thorntail[thorntail-maven-plugin 2.5.0.Final]
+* link:https://microprofile.io/[MicroProfile]
+* link:https://docs.thorntail.io/2.5.0.Final/[Thorntail 2.5.0.Final]
+* link:https://github.com/quarkusio/quarkus/tree/1.3.2.Final[Quarkus 1.3.2.Final]
+* link:https://wildfly.org/[Wildfly 19.0.0.Final]
+
+== Resources
+
+=== Maven Poms
+
+* link:./pom.xml[``./pom.xml``] +
+The ``pom.xml`` we develop with resulting in an __WAR Archive__
+* link:./pom-quarkus.xml[``./pom-quarkus.xml``] +
+The Quarkus ``pom.xml`` for building the Quarkus microservice
+* link:./pom-thorntail.xml[``./pom-thorntail.xml``] +
+The Thorntail ``pom.xml`` for building the Throntail microservice
+* link:./pom-wildfly.xml[``./pom-wildfly.xml``] +
+The Wildfly ``pom.xml`` for building the __'Wildfly microservice'__
+
+=== Configuration files
+
+* link:./thorntail-external.yaml[``./thorntail-external.yaml``] +
+The external Throtnail configuration file
+* link:./wildfly.properties[``./wildfly.properties``] +
+The external Wildfly configuration file
+
+=== Directories
+
+* ``./target`` +
+The plain war.
+* ``./target-quarkus`` +
+The Quakrus microservice target directory.
+* ``./target-thorntail`` +
+The Thorntail microservice target directory.
+* ``./target-wildfly`` +
+The Wildfly microservice target directory.
+* link:./src/main/resources[``./src/main/resources``] +
+The resource directory containing resources used by all microservice types.
+* link:./src/main/resources-quakrus[``./src/main/resources-quarkus``] +
+The resource directory containing resources used by Quarkus microservice only.
+* link:./src/main/resources-thorntail[``./src/main/resources-thorntail``] +
+The resource directory containing resources used by Thorntail microservice only.
+* link:./src/main/webapp-wildfly[``./src/main/webapp-wildfly``] +
+The web resource directory containing resources used by Wildfly microservice only.
+
+== How to build
+
+.Plain WAR
+[source,bash]
+----
+mvn clean install -f pom.xml
+----
+
+.Thorntail microservice
+[source,bash]
+----
+mvn clean install -f pom-thorntail.xml
+----
+
+.Quarkus microservice
+[source,bash]
+----
+mvn clean install -f pom-quarkus.xml
+----
+
+.Wildfly WAR deployment
+[source,bash]
+----
+mvn clean install -f pom-wildfly.xml
+----
+
+== How to run
+
+.Start Thorntail microservice (8081)
+[source,bash]
+----
+mvn thorntail:run -f pom-thorntail.xml
+----
+
+.Start Quarkus microservice (8082)
+[source,bash]
+----
+java "-Djava.net.preferIPv4Stack=true" -jar target-quarkus\microprofile-quarkus-0.0.1-SNAPSHOT-runner.jar
+----
+
+TIP: Normally the maven goal ``quarkus:dev`` should start the application as well but it fails with ClassNotFoundException (org/jboss/logging/Logger). +
+I think this is related to working on a Windows OS.
+
+.Start/Configure/Deploy Wildfly (8080)
+[source,bash]
+----
+mvn wildfly:run -f pom-wildfly.xml
+----
+
+== Prepare test
+
+This sample application requires a Jaeger instance running on ``localhost:6831`` where the traces are being send to.
+
+.Start Jaeger with docker
+[source,bash]
+----
+docker run -p 6831:6831/udp -p 16686:16686 --name jaeger-local jaegertracing/all-in-one:latest
+----
+
+== How to test
+
+If you use Intellij then you can use the ``test.http`` file for testing the rest endpoints. +
+However, see the following available endpoints and use the tool of your choice.
+
+=== Used ports
+
+The different microservice types run on different ports, so that they can be started concurrently.
+
+. Wildfly - ``8080``
+. Thorntail - ``8081``
+. Quarkus - ``8080``
+
+=== With injectable rest client
+
+.GET call to external resource
+``GET http://127.0.0.1:[8080|8081|8082]/get``
+
+.POST call to external resource
+``POST http://127.0.0.1:[8080|8081|8082]/post``
+
+.PATCH call to external resource
+``PATCH http://127.0.0.1:[8080|8081|8082]/patch``
+
+.DELETE call to external resource
+``DELETE http://127.0.0.1:[8080|8081|8082]/delete``
+
+=== With custom built rest client
+
+.GET call to external resource
+``GET http://127.0.0.1:[8080|8081|8082]/custom/get``
+
+.POST call to external resource
+``POST http://127.0.0.1:[8080|8081|8082]/custom/post``
+
+.PATCH call to external resource
+``PATCH http://127.0.0.1:[8080|8081|8082]/custom/patch``
+
+.DELETE call to external resource
+``DELETE http://127.0.0.1:[8080|8081|8082]/custom/delete``
+

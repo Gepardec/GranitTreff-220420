@@ -1,0 +1,18 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Java template
+# Compiled class file
+.idea/
+mvnw
+mvnw.cmd
+.mvn/
+target*/
+.dockerignore
+# Log file
+*.log
+
+# Package Files #
+*.nar
+*.zip
+*.tar.gz
+*.rar
+*.iml
