@@ -55,6 +55,17 @@ The resource directory containing resources used by Thorntail microservice only.
 * link:./src/main/webapp-wildfly[``./src/main/webapp-wildfly``] +
 The web resource directory containing resources used by Wildfly microservice only.
 
+== Setup
+
+=== Setup Maven
+
+.Install Maven Wrapper
+[source,bash]
+----
+./mvnw[.cmd] io.takari:maven:wrapper
+----
+
+
 == How to build
 
 .Plain WAR
