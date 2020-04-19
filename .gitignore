@@ -2,9 +2,8 @@
 ### Java template
 # Compiled class file
 .idea/
-mvnw
-mvnw.cmd
-.mvn/
+.mvn/wrapper/*.jar
+.mvn/wrapper/*.java
 target*/
 .dockerignore
 # Log file

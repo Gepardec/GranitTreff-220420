@@ -60,25 +60,25 @@ The web resource directory containing resources used by Wildfly microservice onl
 .Plain WAR
 [source,bash]
 ----
-mvn clean install -f pom.xml
+./mvnw[.cmd] clean install -f pom.xml
 ----
 
 .Thorntail microservice
 [source,bash]
 ----
-mvn clean install -f pom-thorntail.xml
+./mvnw[.cmd] clean install -f pom-thorntail.xml
 ----
 
 .Quarkus microservice
 [source,bash]
 ----
-mvn clean install -f pom-quarkus.xml
+./mvnw[.cmd] clean install -f pom-quarkus.xml
 ----
 
 .Wildfly WAR deployment
 [source,bash]
 ----
-mvn clean install -f pom-wildfly.xml
+./mvnw[.cmd] clean install -f pom-wildfly.xml
 ----
 
 == How to run
@@ -86,7 +86,7 @@ mvn clean install -f pom-wildfly.xml
 .Start Thorntail microservice (8081)
 [source,bash]
 ----
-mvn thorntail:run -f pom-thorntail.xml
+./mvnw[.cmd] thorntail:run -f pom-thorntail.xml
 ----
 
 .Start Quarkus microservice (8082)
@@ -101,7 +101,7 @@ I think this is related to working on a Windows OS.
 .Start/Configure/Deploy Wildfly (8080)
 [source,bash]
 ----
-mvn wildfly:run -f pom-wildfly.xml
+./mvnw[.cmd] wildfly:run -f pom-wildfly.xml
 ----
 
 == Prepare test
