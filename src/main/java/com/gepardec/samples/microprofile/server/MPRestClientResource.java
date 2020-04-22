@@ -1,5 +1,6 @@
-package com.gepardec.samples.microprofile.opentracing;
+package com.gepardec.samples.microprofile.server;
 
+import com.gepardec.samples.microprofile.mp.restclient.MPRestClient;
 import org.eclipse.microprofile.opentracing.Traced;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
@@ -11,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 @RequestScoped
 @Path("/")
 @Traced
-public class RestResource {
+public class MPRestClientResource {
 
     // Qualified injection of the type safe rest client
     @Inject

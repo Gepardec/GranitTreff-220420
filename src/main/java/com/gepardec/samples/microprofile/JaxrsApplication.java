@@ -1,4 +1,4 @@
-package com.gepardec.samples.microprofile.opentracing;
+package com.gepardec.samples.microprofile;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

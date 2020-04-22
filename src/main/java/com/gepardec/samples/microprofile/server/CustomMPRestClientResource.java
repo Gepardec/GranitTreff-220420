@@ -1,5 +1,7 @@
-package com.gepardec.samples.microprofile.opentracing;
+package com.gepardec.samples.microprofile.server;
 
+import com.gepardec.samples.microprofile.mp.opentracing.ClientSpanDecorator;
+import com.gepardec.samples.microprofile.mp.restclient.MPRestClient;
 import io.opentracing.contrib.jaxrs2.client.ClientTracingFeature;
 import io.opentracing.util.GlobalTracer;
 import org.eclipse.microprofile.config.Config;
@@ -18,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 @RequestScoped
 @Path("/custom")
 @Traced
-public class CustomRestResource {
+public class CustomMPRestClientResource {
 
     private static final String EXTERNAL_RESOURCE_KEY_URL = "externalResource/mp-rest/url";
 

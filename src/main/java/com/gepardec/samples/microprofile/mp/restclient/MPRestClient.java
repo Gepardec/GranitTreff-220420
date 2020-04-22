@@ -1,4 +1,4 @@
-package com.gepardec.samples.microprofile.opentracing;
+package com.gepardec.samples.microprofile.mp.restclient;
 
 import io.opentracing.contrib.jaxrs2.client.ClientTracingFeature;
 import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;

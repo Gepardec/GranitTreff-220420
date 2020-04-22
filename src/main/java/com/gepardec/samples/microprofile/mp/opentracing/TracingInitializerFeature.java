@@ -1,4 +1,4 @@
-package com.gepardec.samples.microprofile.opentracing;
+package com.gepardec.samples.microprofile.mp.opentracing;
 
 import io.opentracing.contrib.jaxrs2.server.ServerTracingDynamicFeature;
 import io.opentracing.util.GlobalTracer;

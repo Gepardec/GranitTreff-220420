@@ -1,4 +1,4 @@
-package com.gepardec.samples.microprofile.opentracing;
+package com.gepardec.samples.microprofile.mp.opentracing;
 
 import io.jaegertracing.Configuration;
 import io.opentracing.Tracer;
