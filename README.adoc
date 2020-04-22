@@ -2,6 +2,8 @@
 
 This repository holds the sample application for the talk __Microservice with Thorntail__ at GranitTreff on 22.04.2020. Actually this repository illustrates how a JEE application can run on multiple runtimes such as Quakrus, Thorntail and Wildfly.
 
+link:./Microservices_with_Thorntail.io.pdf[slides]
+
 == Description
 
 This samples application represents an ordinary JEE application with MicroProfiles.
